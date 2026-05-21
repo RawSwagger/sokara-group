@@ -1,11 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Services from "@/components/Services";
-import Events from "@/components/Events";
-import Portfolio from "@/components/Portfolio";
-import Differentiators from "@/components/Differentiators";
+import Interstitial from "@/components/Interstitial";
+import Pillars from "@/components/Pillars";
+import InsideSokara from "@/components/InsideSokara";
 import Contact from "@/components/Contact";
+import LeahPersonalLink from "@/components/LeahPersonalLink";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -14,11 +14,20 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
-      <Services />
-      <Events />
-      <Portfolio />
-      <Differentiators />
+      <Interstitial
+        line1="The room is the receipt."
+        line2="What happens here doesn't leave."
+        bg="warm-gray"
+      />
+      <Pillars />
+      <Interstitial
+        line1="The firm the firms call."
+        line2="The advisor's advisor."
+        bg="white"
+      />
+      <InsideSokara />
       <Contact />
+      <LeahPersonalLink />
       <Footer />
     </main>
   );

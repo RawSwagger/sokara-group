@@ -8,9 +8,6 @@
   --color-warm-gray: #F5F4F0;
   --color-medium-gray: #8A8A8A;
   --color-light-border: #E8E6E1;
-
-  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 @layer base {
@@ -21,7 +18,7 @@
   }
 
   body {
-    font-family: var(--font-sans);
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     color: var(--color-charcoal);
     background-color: #FFFFFF;
   }
@@ -34,21 +31,29 @@
 
 @layer components {
   .heading-xl {
-    font-family: var(--font-serif);
-    font-weight: 400;
+    font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+    font-weight: 500;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    line-height: 1.02;
   }
 
   .heading-lg {
-    font-family: var(--font-serif);
-    font-weight: 400;
+    font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+    font-weight: 500;
     letter-spacing: -0.01em;
-    line-height: 1.2;
+    line-height: 1.1;
+  }
+
+  .heading-monument {
+    font-family: var(--font-display), var(--font-serif), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.0;
   }
 
   .label-caps {
-    font-family: var(--font-sans);
+    font-family: var(--font-sans), sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.15em;
@@ -61,32 +66,87 @@
     background-color: var(--color-gold);
   }
 
-  .fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0;
+  .ken-burns {
+    animation: kenBurns 40s ease-in-out infinite alternate;
+    will-change: transform;
   }
 
-  .fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-    opacity: 0;
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-gold);
+    transition: width 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .nav-link:hover::after {
+    width: 100%;
   }
 
-  .slide-in-left {
-    animation: slideInLeft 0.8s ease-out forwards;
+  .pillar-card {
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1),
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+  }
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gold);
+    box-shadow: 0 12px 40px -20px rgba(184, 150, 90, 0.25);
+  }
+
+  .tile-hover {
+    position: relative;
+    transition: background-color 0.4s ease;
+  }
+  .tile-hover::before,
+  .tile-hover::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: var(--color-gold);
     opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .tile-hover::before {
+    top: 12px;
+    left: 12px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .tile-hover::after {
+    bottom: 12px;
+    right: 12px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+  .tile-hover:hover::before,
+  .tile-hover:hover::after {
+    opacity: 1;
+  }
+
+  .arrow-slide {
+    transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+    display: inline-block;
+  }
+  .group:hover .arrow-slide,
+  a:hover .arrow-slide,
+  button:hover .arrow-slide {
+    transform: translateX(4px);
   }
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-24px); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes kenBurns {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.06) translate3d(-1%, -1%, 0);
+  }
 }
