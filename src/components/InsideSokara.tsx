@@ -85,7 +85,7 @@ export default function InsideSokara() {
 
               <div className="shrink-0">
                 <a
-                  href="https://weareglory-us.vercel.app"
+                  href="https://weareglory-us-v2.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group label-caps text-[11px] px-8 py-4 bg-gold text-charcoal hover:bg-gold-light transition-colors duration-300 inline-flex items-center gap-3 tracking-[0.25em] whitespace-nowrap"
